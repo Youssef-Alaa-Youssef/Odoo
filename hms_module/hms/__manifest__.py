@@ -6,5 +6,7 @@
     "version":"0.1",
     "data":[
     'view/patient.xml',
+    'view/doctor.xml',
+    'view/departement.xml',
     ]
 }

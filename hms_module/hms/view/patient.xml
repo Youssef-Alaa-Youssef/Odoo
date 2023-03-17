@@ -1,19 +1,68 @@
 <odoo>
 <data>
+
+<record model="ir.ui.view" id="hms_patient_view">
+    <field name="name">patient</field>
+    <field name="model">hms.patient</field>
+    <field name="arch" type="xml">
+        <form string="Patient">
+            <sheet>
+                <group>
+                    <field name="first_name" attrs="{'required': True}"/>
+                    <field name="last_name" attrs="{'required': True}"/>
+                    <field name="birth_date"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                    <field name="history" attrs="{'invisible': [('age','&lt;',50)]}"/>
+                    <field name="cr_ratio" attrs="{'required': [('pcr','=',True)]}"/>
+                    <field name="blood_type"/>
+                    <field name="pcr"/>
+                    <field name="department_ids" domain ="[('is_opened', '=', True)]"/>
+                    <field name="doctor_ids" widget="many2many_tags"  attrs="{'readonly': [('department_ids','=',False)]}"/>
+                    <field name="state"/>
+                    <field name="Image" widget="image" options="{'preview_image': true}"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
 <record model='ir.actions.act_window' id="hms_action_patient">
    <field name="name">Patients</field>
             <field name="res_model">hms.patient</field>
             <field name="view_mode">tree,form</field>
 </record>
+<record model='ir.actions.act_window' id="hms_departement">
+            <field name="name">Department</field>
+            <field name="res_model">hms.department</field>
+            <field name="view_mode">tree,form</field>
+</record>
+
+<record model='ir.actions.act_window' id="hms_action_doctor">
+   <field name="name">Doctor</field>
+            <field name="res_model">hms.doctor</field>
+            <field name="view_mode">tree,form</field>
+</record>
+
 <menuitem id="menu"
-            name="Patients"
+            name="Hostpitals"
            />
 <menuitem id="menu1"
-            name="Details"
+            name="Patient"
              parent="menu"
              action="hms_action_patient"
            />
+           <menuitem id="menu2"
+            name="Departments"
+             parent="menu"
+             action="hms_departement"
+           />
 
-
+<menuitem id="menu3"
+            name="Doctor"
+             parent="menu"
+             action="hms_action_doctor"
+           />
 </data>
 </odoo>

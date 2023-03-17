@@ -4,6 +4,7 @@ from odoo import models,fields
 
 class Patient(models.Model):
     _name = 'hms.patient'
+    _rec_name ='first_name'
 
     first_name =fields.Char()
     last_name = fields.Char()
@@ -20,6 +21,14 @@ class Patient(models.Model):
     Image = fields.Image()
     address = fields.Text()
     age = fields.Integer()
+    department_ids = fields.Many2one('hms.department', string='Departments')
+    doctor_ids = fields.Many2many('hms.doctor', string='Doctors')
+    state = fields.Selection([
+        ('undetermined', 'Undetermined'),
+        ('good', 'Good'),
+        ('fair', 'Fair'),
+        ('serious', 'Serious')
+    ], string='State')
 
 
 
