@@ -20,8 +20,18 @@
                     <field name="department_ids" domain ="[('is_opened', '=', True)]"/>
                     <field name="doctor_ids" widget="many2many_tags"  attrs="{'readonly': [('department_ids','=',False)]}"/>
                     <field name="state"/>
+                    <field name="email"/>
                     <field name="Image" widget="image" options="{'preview_image': true}"/>
-                </group>
+                 </group>
+                 <!-- <notebook>
+                            <page string="Log History">
+                                <field name="log_ids" nolabel="1">
+                                    <tree>
+                                        <field name="description_log"/>
+                                    </tree>
+                                </field>
+                            </page>
+                    </notebook> -->
             </sheet>
         </form>
     </field>
@@ -61,6 +71,12 @@
 
 <menuitem id="menu3"
             name="Doctor"
+             parent="menu"
+             action="hms_action_doctor"
+           />
+
+<menuitem id="menu4"
+            name="Logs"
              parent="menu"
              action="hms_action_doctor"
            />
