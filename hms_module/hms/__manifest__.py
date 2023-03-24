@@ -9,5 +9,6 @@
     'view/patient.xml',
     'view/doctor.xml',
     'view/departement.xml',
+    'reports/reports.xml',
     ]
 }
