@@ -5,6 +5,7 @@
     "author":"Youssef Alaa",
     "version":"0.1",
     "data":[
+    'security/security.xml',
     'view/patient.xml',
     'view/doctor.xml',
     'view/departement.xml',
